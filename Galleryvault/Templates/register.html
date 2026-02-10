@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
 </head>
 <body>
+    <div class="first">
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="name" placeholder="Name" id=""><br><br>
-        <input type="email" name="email" placeholder="Email" id=""><br><br>
-        <input type="password" name="password" placeholder="Password" id=""><br><br>
-        <input type="password" name="cnf_password" placeholder="Confirm Password" id=""><br><br>
+
+    <div class="inp-bg">
+            <h2>Registration Form</h2><br>
+
+    <div class="input">
+        <input type="text" name="name" placeholder="                      Name" id=""><br><br>
+        <input type="email" name="email" placeholder="                      Email" id=""><br><br>
+        <input type="password" name="password" placeholder="                      Password" id=""><br><br>
+        <input type="password" name="cnf_password" placeholder="              Confirm Password" id=""><br><br>
+
+    <div class="register"> 
         <input type="submit" value="REGISTER">
+    </div>  
+    </div>
+    </div>
     </form>
+</div>
 
     <!-- <a href="../login"><button>REGISTER</button></a> -->
 </body>
