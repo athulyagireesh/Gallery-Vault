@@ -1,54 +1,103 @@
-*{
+* {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
-
 
 .first {
     width: 100%;
-    height: 100vh; 
+    min-height: 100vh; 
     background-color: aquamarine;
     display: flex;
     justify-content: center; 
-    align-items: center;   
+    align-items: center; 
+    padding: 40px 0;
 }
 
-
 .inp-bg {
-    width: 500px;
-    height: 360px; 
+    width: 600px;
+    min-height: 400px; 
     padding: 40px; 
     background-color: bisque;
     border-radius: 50px;
     box-shadow: 0 20px 35px rgba(0,0,0,0.1); 
+    display: flex;
+    flex-direction: column;
 }
 
-
-.inp-bg h2{
-    padding-left: 150px;
+.inp-bg h1 {
+    font-family: serif;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
-
-
 
 .input {
     display: flex;
-    padding-top: 10px;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
-input {
-    width: 30vh;
-    height: 3vh;
+/* Styling the title and file inputs */
+.input input {
+    width: 300px;
+    height: 30px;
+    padding: 5px;
 }
 
-.logout input{
-    width: 20vh;
-    height: 4vh;
-    border-radius: 30px;
-    background-color:darkgray;
+/* Styling the ADD button */
+.input button {
+    width: 60px;
+    cursor: pointer;
+    padding: 2px;
 }
 
-.logout input:hover{
-    color:cornsilk;
+/* Creating the 2x2 Grid */
+.main {
+    /* !important is used to override the style="display:flex" in your HTML */
+    display: grid !important; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    justify-items: center;
+    margin-top: 30px !important;
+}
+
+/* Styling individual image blocks */
+.sub {
+    /* Overriding the flex in HTML to ensure grid behavior */
+    display: block !important; 
+    text-align: left;
+}
+
+.sub img {
+    border: 1px solid #777;
+    object-fit: cover;
+}
+
+.sub p {
+    font-family: serif;
+    margin-top: 5px;
+}
+
+/* Logout section positioning */
+.logout {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.logout input {
+    width: 180px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: darkgray;
+    border: 1.5px solid #333;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.logout input:hover {
+    color: cornsilk;
+    background-color: #555;
 }
