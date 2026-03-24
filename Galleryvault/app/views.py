@@ -51,14 +51,39 @@ def logout(request):
 
 
 
+# def file_upload(request):
+#     if 'user' in request.session:
+#         user = Users.objects.get(id = request.session['user'])
+#         files=Docs.objects.filter(fname=user)
+#         if request.method=='POST':
+#             title=request.POST['title']
+#             doc=request.FILES['file']
+#             Docs.objects.create(title=title,file=doc,fname=user)
+#         return render(request,'index.html',{'files':files,'user':user})
+#     else:
+#         return redirect(login)
+    
+
+
+
 def file_upload(request):
     if 'user' in request.session:
-        user = Users.objects.get(id = request.session['user'])
-        files=Docs.objects.filter(fname=user)
-        if request.method=='POST':
-            title=request.POST['title']
-            doc=request.FILES['file']
-            Docs.objects.create(title=title,file=doc,fname=user)
-        return render(request,'index.html',{'files':files,'user':user})
+        user = Users.objects.get(id=request.session['user'])
+        files = Docs.objects.filter(fname=user)
+        
+        if request.method == 'POST':
+            title = request.POST.get('title')
+            # Use .get() instead of ['file'] to avoid the crash
+            doc = request.FILES.get('file')
+            
+            # Only create the object if a file was actually uploaded
+            if doc:
+                Docs.objects.create(title=title, file=doc, fname=user)
+                return redirect(file_upload) # Refresh to show the new file
+            else:
+                # Optional: Add an error message here
+                print("No file was selected")
+                
+        return render(request, 'index.html', {'files': files, 'user': user})
     else:
         return redirect(login)
